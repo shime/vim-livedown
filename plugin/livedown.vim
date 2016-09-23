@@ -14,6 +14,15 @@ if !exists('g:livedown_port')
   let g:livedown_port = 1337
 endif
 
+if !exists('g:livedown_command')
+  " Check if livedown is available globally
+  let g:livedown_command = 'livedown'
+  if !executable(g:livedown_command)
+    " Lastly, try local livedown installation relative to plugin
+    let g:livedown_command = expand('<sfile>:h') . '/../node_modules/.bin/livedown'
+  endif
+endif
+
 function! s:LivedownRun(command)
   let a:platform_command = has('win32') ?
     \ "start /B " . a:command :
@@ -26,14 +35,14 @@ function! s:LivedownRun(command)
 endfunction
 
 function! s:LivedownPreview()
-  call s:LivedownRun("livedown start \"" . expand('%:p') . "\"" .
+  call s:LivedownRun(g:livedown_command . " start \"" . expand('%:p') . "\"" .
       \ (g:livedown_open ? " --open" : "") .
       \ " --port " . g:livedown_port .
       \ (exists("g:livedown_browser") ? " --browser " . g:livedown_browser : ""))
 endfunction
 
 function! s:LivedownKill()
-  call s:LivedownRun("livedown stop --port " . g:livedown_port)
+  call s:LivedownRun(g:livedown_command . " stop --port " . g:livedown_port)
 endfunction
 
 function! s:LivedownToggle()
@@ -43,4 +52,3 @@ function! s:LivedownToggle()
 		call s:LivedownKill() | unlet! s:livedownPreviewFlag
 	endif
 endfunction
-
