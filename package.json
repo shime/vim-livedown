@@ -1,0 +1,18 @@
+{
+  "name": "vim-livedown",
+  "version": "1.0.3",
+  "description": "Vim plugin for Livedown.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shime/vim-livedown.git"
+  },
+  "author": "Hrvoje Simic <hrvoje@twobucks.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shime/vim-livedown/issues"
+  },
+  "homepage": "https://github.com/shime/vim-livedown",
+  "dependencies": {
+    "livedown": "^1.0.8"
+  }
+}
