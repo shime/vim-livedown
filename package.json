@@ -1,6 +1,6 @@
 {
   "name": "vim-livedown",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Vim plugin for Livedown.",
   "repository": {
     "type": "git",
