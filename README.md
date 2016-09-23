@@ -51,11 +51,8 @@ let g:livedown_open = 1
 " the port on which Livedown server will run
 let g:livedown_port = 1337
 
-" the system command to launch a browser (ex. on linux)
-let g:livedown_browser = firefox
-
-" the system command to launch a browser (ex. on OSX)
-let g:livedown_browser = "open /Applications/Firefox.app"
+" the browser to use
+let g:livedown_browser = "safari"
 ```
 
 ## License
