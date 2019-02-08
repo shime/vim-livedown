@@ -23,6 +23,16 @@ if !exists('g:livedown_command')
   endif
 endif
 
+function! s:LivedownBrowser()
+  if g:livedown_browser == "chrome" && has('macunix')
+    let l:browser = "'Google Chrome'"
+  else
+    let l:browser = g:livedown_browser
+  endif
+
+  return '"' . l:browser . '"'
+endfunction
+
 function! s:LivedownRun(command)
   let a:platform_command = has('win32') ?
     \ "start /B " . a:command :
@@ -35,10 +45,12 @@ function! s:LivedownRun(command)
 endfunction
 
 function! s:LivedownPreview()
-  call s:LivedownRun(g:livedown_command . " start \"" . expand('%:p') . "\"" .
+  let l:command = g:livedown_command . " start \"" . expand('%:p') . "\"" .
       \ (g:livedown_open ? " --open" : "") .
       \ " --port " . g:livedown_port .
-      \ (exists("g:livedown_browser") ? " --browser " . g:livedown_browser : ""))
+      \ (exists("g:livedown_browser") ? " --browser " . s:LivedownBrowser() : "")
+
+  call s:LivedownRun(command)
 endfunction
 
 function! s:LivedownKill()
