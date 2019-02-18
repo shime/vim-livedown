@@ -6,7 +6,7 @@ A Vim plugin for [Livedown](https://github.com/shime/livedown).
 
 ## Installation
 
-First make sure you have [node](http://nodejs.org/) with [npm](https://www.npmjs.org/) installed. 
+First make sure you have [node](http://nodejs.org/) with [npm](https://www.npmjs.org/) installed.
 
 If you have node do
 
@@ -46,12 +46,12 @@ There are several configuration variables you can customize to suit your needs, 
 let g:livedown_autorun = 0
 
 " should the browser window pop-up upon previewing
-let g:livedown_open = 1 
+let g:livedown_open = 1
 
 " the port on which Livedown server will run
 let g:livedown_port = 1337
 
-" the browser to use
+" the browser to use, can also be firefox, chrome or other, depending on your executable
 let g:livedown_browser = "safari"
 ```
 
