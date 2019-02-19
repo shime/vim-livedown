@@ -23,17 +23,9 @@ if !exists('g:livedown_command')
   endif
 endif
 
-function! s:LivedownChromeName()
-  if has('macunix')
-    return "'Google Chrome'"
-  elseif has('unix')
-    return 'google-chrome'
-  endif
-endfunction
-
 function! s:LivedownBrowser()
-  if g:livedown_browser =~ '\c\(google\)\?[ -]\?chrome'
-    let l:browser = s:LivedownChromeName()
+  if g:livedown_browser == "chrome" && has('macunix')
+    let l:browser = "'Google Chrome'"
   else
     let l:browser = g:livedown_browser
   endif
