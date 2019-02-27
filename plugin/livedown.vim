@@ -34,14 +34,14 @@ function! s:LivedownBrowser()
 endfunction
 
 function! s:LivedownRun(command)
-  let a:platform_command = has('win32') ?
+  let l:platform_command = has('win32') ?
     \ "start /B " . a:command :
     \ a:command . " &"
-  let a:Func = has('nvim') ?
+  let l:Func = has('nvim') ?
     \ function('jobstart') :
     \ function('system')
 
-  silent! call a:Func(a:platform_command)
+  silent! call l:Func(l:platform_command)
 endfunction
 
 function! s:LivedownPreview()
